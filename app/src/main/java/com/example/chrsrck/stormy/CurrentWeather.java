@@ -11,7 +11,7 @@ public class CurrentWeather {
     private String mIcon;
     private long mTime;
     private double mTemperature;
-    private double mHimidity;
+    private double mHumidity;
     private double mPrecipChance;
     private String mSummary;
     private String mTimezone;
@@ -24,7 +24,7 @@ public class CurrentWeather {
         mTimezone = timezone;
     }
 
-    public String getIcon() {
+    public int getIcon() {
         int iconId = R.mipmap.clear_day;
 
         if (mIcon.equals("clear-day")) {
@@ -58,7 +58,7 @@ public class CurrentWeather {
             iconId = R.mipmap.cloudy_night;
         }
 
-        return mIcon;
+        return iconId;
     }
 
     public void setIcon(String icon) {
@@ -81,24 +81,25 @@ public class CurrentWeather {
         mTime = time;
     }
 
-    public double getTemperature() {
-        return mTemperature;
+    public int getTemperature() {
+        return (int) Math.round(mTemperature);
     }
 
     public void setTemperature(double temperature) {
         mTemperature = temperature;
     }
 
-    public double getHimidity() {
-        return mHimidity;
+    public double getHumidity() {
+        return mHumidity;
     }
 
-    public void setHimidity(double himidity) {
-        mHimidity = himidity;
+    public void setHumidity(double humidity) {
+        mHumidity = humidity;
     }
 
-    public double getPrecipChance() {
-        return mPrecipChance;
+    public int getPrecipChance() {
+        double precipPercentage = mPrecipChance * 100;
+        return (int) Math.round(precipPercentage);
     }
 
     public void setPrecipChance(double precipChance) {
